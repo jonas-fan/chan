@@ -1,6 +1,10 @@
 #ifndef __CHAN_H__
 #define __CHAN_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stddef.h>
 
 struct chan;
@@ -29,5 +33,9 @@ size_t chan_tryrecv(struct chan * ch, void * data);
 
 // Return the number of elements (unread) in a channel.
 size_t chan_len(const struct chan * ch);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  // __CHAN_H__

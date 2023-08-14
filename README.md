@@ -2,7 +2,7 @@
 
 Go-style channels in C.
 
-This project respects Golang channels and rewrites it in C based on `C99` standard. The implementation is just a quite simple, no fancy features included.
+This project respects Golang channels and rewrites it in C based on `C99` standard. The implementation is just quite simple, no fancy features included.
 
 ## Unbuffered channels
 
@@ -61,7 +61,7 @@ int main()
 }
 ```
 
-## Notification (zero-byte transmission)
+## Synchronization (zero-byte transmission)
 
 ```c
 #include "chan.h"
@@ -72,7 +72,8 @@ int main()
     struct chan * ch = chan_make(0, 0);
 
     // Blocked until a receiver performs a read
-    chan_send(ch, NULL);  // or chan_recv(ch, NULL);
+    // or chan_recv(ch, NULL); to wait a writer
+    chan_send(ch, NULL);
 
     // Close the channel
     chan_close(ch);
